@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
   const [form, setForm] = useState({
     email: "",
+    username: "",
     password: "",
     confirmedPassword: "",
   });
@@ -31,6 +32,15 @@ const Register = () => {
           <Form.Input
             placeholder="jsmith@gmail.com"
             name="email"
+            value={form.email}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Username</label>
+          <Form.Input
+            placeholder="jsmith"
+            name="username"
             value={form.email}
             onChange={handleChange}
           />

@@ -1,12 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../utils/UserContext";
+import axios from "axios";
 
-const Login = () => {
+const Login = ({ history }) => {
+  const { setUser } = useContext(UserContext);
+
   const [form, setForm] = useState({
-    email: "",
+    username: "",
     password: "",
-    confirmedPassword: "",
   });
 
   const handleChange = (e, { name, value }) =>
@@ -16,7 +19,26 @@ const Login = () => {
     }));
 
   const handleSubmit = () => {
-    console.log(form);
+    // TODO : validate form
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { username, password } = form;
+    const body = JSON.stringify({ username, password });
+    axios
+      .post("/api/auth/login", body, config)
+      .then((res) => {
+        const user = res.data;
+        setUser(user);
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -27,11 +49,11 @@ const Login = () => {
       </p>
       <Form onSubmit={handleSubmit}>
         <Form.Field>
-          <label>Email</label>
+          <label>Username</label>
           <Form.Input
-            placeholder="jsmith@gmail.com"
-            name="email"
-            value={form.email}
+            placeholder="jsmith"
+            name="username"
+            value={form.username}
             onChange={handleChange}
           />
         </Form.Field>
