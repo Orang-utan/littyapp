@@ -10,7 +10,15 @@ import { Container } from "semantic-ui-react";
 import { UserContext } from "../utils/UserContext";
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUserState] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
+
+  const setUser = (x) => {
+    setUserState(x);
+    localStorage.setItem("user", JSON.stringify(x));
+  };
+
   const providerValue = useMemo(() => ({ user, setUser }));
 
   return (

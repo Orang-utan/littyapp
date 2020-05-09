@@ -1,16 +1,22 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../utils/UserContext";
 import axios from "axios";
 
 const Login = ({ history }) => {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      history.push("/");
+    }
+  }, [user]);
 
   const handleChange = (e, { name, value }) =>
     setForm((current) => ({
@@ -21,14 +27,15 @@ const Login = ({ history }) => {
   const handleSubmit = () => {
     // TODO : validate form
 
+    const { username, password } = form;
+    const body = JSON.stringify({ username, password });
+
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
 
-    const { username, password } = form;
-    const body = JSON.stringify({ username, password });
     axios
       .post("/api/auth/login", body, config)
       .then((res) => {
@@ -37,7 +44,7 @@ const Login = ({ history }) => {
         history.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data);
       });
   };
 
@@ -60,6 +67,7 @@ const Login = ({ history }) => {
         <Form.Field>
           <label>Password</label>
           <Form.Input
+            placeholder="********"
             type="password"
             name="password"
             value={form.password}
@@ -67,7 +75,7 @@ const Login = ({ history }) => {
           />
         </Form.Field>
         <Button primary type="submit">
-          Submit
+          Login
         </Button>
       </Form>
     </Fragment>

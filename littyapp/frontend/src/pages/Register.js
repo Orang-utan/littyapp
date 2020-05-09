@@ -1,14 +1,24 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Button, Form, Checkbox } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../utils/UserContext";
 
-const Register = () => {
+const Register = ({ history }) => {
+  const { user, setUser } = useContext(UserContext);
+
   const [form, setForm] = useState({
     email: "",
     username: "",
     password: "",
     confirmedPassword: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      history.push("/");
+    }
+  }, [user]);
 
   const handleChange = (e, { name, value }) =>
     setForm((current) => ({
@@ -17,7 +27,27 @@ const Register = () => {
     }));
 
   const handleSubmit = () => {
-    console.log(form);
+    // TODO : validate form
+
+    const { username, email, password } = form;
+    const body = JSON.stringify({ username, email, password });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    axios
+      .post("/api/auth/register", body, config)
+      .then((res) => {
+        const user = res.data;
+        setUser(user);
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
   };
 
   return (
@@ -41,13 +71,14 @@ const Register = () => {
           <Form.Input
             placeholder="jsmith"
             name="username"
-            value={form.email}
+            value={form.username}
             onChange={handleChange}
           />
         </Form.Field>
         <Form.Field>
           <label>Password</label>
           <Form.Input
+            placeholder="********"
             type="password"
             name="password"
             value={form.password}
@@ -57,6 +88,7 @@ const Register = () => {
         <Form.Field>
           <label>Confirm Password</label>
           <Form.Input
+            placeholder="********"
             type="password"
             name="confirmedPassword"
             value={form.confirmedPassword}
@@ -67,7 +99,7 @@ const Register = () => {
           <Checkbox label="I agree to the Terms and Conditions" />
         </Form.Field>
         <Button primary type="submit">
-          Submit
+          Register
         </Button>
       </Form>
     </Fragment>

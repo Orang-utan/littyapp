@@ -1,14 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../utils/UserContext";
+import axios from "axios";
 
-const Navbar = () => {
-  const { user } = useContext(UserContext);
+const Navbar = ({ history }) => {
+  const { user, setUser } = useContext(UserContext);
 
   const style = {
     item: {
       color: "black",
     },
+  };
+
+  const logout = () => {
+    const config = {
+      headers: {
+        Authorization: `Token ${user.token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    axios
+      .post("/api/auth/logout", null, config)
+      .then(() => {
+        setUser(null);
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -18,7 +38,12 @@ const Navbar = () => {
       </Link>
       <div className="right menu">
         {user ? (
-          <Link to="/" style={style.item} className="header item">
+          <Link
+            to="#"
+            style={style.item}
+            className="header item"
+            onClick={logout}
+          >
             Logout
           </Link>
         ) : (
