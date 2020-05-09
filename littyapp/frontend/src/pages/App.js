@@ -6,8 +6,10 @@ import Login from "./Login";
 import Register from "./Register";
 import BrokenLink from "./BrokenLink";
 import Navbar from "../components/Navbar";
+import Profile from "./Profile";
 import { Container } from "semantic-ui-react";
 import { UserContext } from "../utils/UserContext";
+import PrivateRoute from "../utils/PrivateRoute";
 
 const App = () => {
   const [user, setUserState] = useState(
@@ -30,6 +32,7 @@ const App = () => {
             <Route exact path="/" component={Main} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
+            <PrivateRoute exact path="/profile" component={Profile} />
             <Route path="/" component={BrokenLink} />
           </Switch>
         </UserContext.Provider>

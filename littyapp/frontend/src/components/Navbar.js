@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../utils/UserContext";
 import axios from "axios";
@@ -38,14 +38,19 @@ const Navbar = ({ history }) => {
       </Link>
       <div className="right menu">
         {user ? (
-          <Link
-            to="#"
-            style={style.item}
-            className="header item"
-            onClick={logout}
-          >
-            Logout
-          </Link>
+          <>
+            <Link to="/profile" style={style.item} className="header item">
+              Profile
+            </Link>
+            <Link
+              to="#"
+              style={style.item}
+              className="header item"
+              onClick={logout}
+            >
+              Logout
+            </Link>
+          </>
         ) : (
           <>
             <Link to="/login" style={style.item} className="header item">
