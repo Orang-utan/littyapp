@@ -5,7 +5,7 @@ const Main = () => {
   return (
     <Fragment>
       <h1>Main</h1>
-      <button class="ui button">Click Here</button>
+      <button className="ui button">Click Here</button>
     </Fragment>
   );
 };

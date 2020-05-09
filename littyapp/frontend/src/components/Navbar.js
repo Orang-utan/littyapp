@@ -9,16 +9,18 @@ const Navbar = () => {
   };
 
   return (
-    <div class="ui menu">
-      <Link to="/" style={style.item}>
-        <div class="header item">Litty App</div>
+    <div className="ui menu">
+      <Link to="/" style={style.item} className="header item">
+        Litty App
       </Link>
-      <Link to="/login" style={style.item}>
-        <a class="item">Login</a>
-      </Link>
-      <Link to="/register" style={style.item}>
-        <a class="item">Register</a>
-      </Link>
+      <div className="right menu">
+        <Link to="/login" style={style.item} className="header item">
+          Login
+        </Link>
+        <Link to="/register" style={style.item} className="header item">
+          Register
+        </Link>
+      </div>
     </div>
   );
 };
