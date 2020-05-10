@@ -23,11 +23,14 @@ const Navbar = ({ history }) => {
     axios
       .post("/api/auth/logout", null, config)
       .then(() => {
-        setUser(null);
-        history.push("/");
+        console.log("success");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data);
+      })
+      .finally(() => {
+        setUser(null);
+        history.push("/");
       });
   };
 
