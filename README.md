@@ -2,6 +2,16 @@
 
 A food ordering app.
 
+## Demos
+
+Home Page:
+
+![home](docs/Screenshot1.png "home")
+
+Food Truck Menu:
+
+![mennu](docs/Menu.png "menu")
+
 ## Setting Up
 
 ##### Initialize a virtual enviroment
