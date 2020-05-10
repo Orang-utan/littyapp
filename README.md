@@ -10,7 +10,7 @@ Home Page:
 
 Food Truck Menu:
 
-![mennu](docs/Screeshot2.png "menu")
+![menu](docs/Screenshot2.png "menu")
 
 ## Setting Up
 
