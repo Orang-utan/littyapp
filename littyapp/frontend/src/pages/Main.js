@@ -6,24 +6,17 @@ import axios from "axios";
 
 const Main = () => {
   const { user } = useContext(UserContext);
-
-  const data = [
-    {
-      id: "1",
-      name: "Halal Guy",
-      address: "3650 Spruce Street",
-      description: "Best halal in Philly",
-    },
-    {
-      id: "2",
-      name: "Ramen Guy",
-      address: "3650 Spruce Street",
-      description: "Best ramen in Philly",
-    },
-  ];
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    console.log(user);
+    axios
+      .get("/api/foodtrucks/")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [user]);
 
   return (
@@ -49,6 +42,7 @@ const Main = () => {
                 name={d.name}
                 address={d.address}
                 description={d.description}
+                coverImg={d.coverImg}
               />
             </div>
           ))}

@@ -8,7 +8,7 @@ import os
 class FoodTruckSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FoodTruck
-        fields = ['id', 'name', 'phone', 'address', 'description']
+        fields = ['id', 'name', 'phone', 'address', 'description', 'coverImg']
 
 
 class FoodItemSerializer(serializers.ModelSerializer):
