@@ -2,10 +2,17 @@ import React, { useEffect, useState } from "react";
 import { List, Button, Icon, Divider, Grid, Segment } from "semantic-ui-react";
 import FoodItem from "../components/FoodItem";
 import CartItem from "../components/CartItem";
+import axios from "axios";
 
 const TruckMenu = ({ match }) => {
-  const menuData = ["Lamb Over Rice", "Pepperoni Pizza", "Ramen", "Coke"];
-
+  const [menuData, setMenuData] = useState([]);
+  const [foodTruck, setFoodTruck] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    description: "",
+    coverImg: "",
+  });
   const [cart, setCart] = useState([]);
 
   const handleOrder = () => {
@@ -14,7 +21,29 @@ const TruckMenu = ({ match }) => {
 
   useEffect(() => {
     // call on api
-    console.log(match.params.id);
+    axios
+      .get(`/api/foodtrucks/${match.params.id}/menu/`)
+      .then((menu) => {
+        setMenuData(menu.data);
+        axios
+          .get(`api/foodtrucks/${match.params.id}/`)
+          .then((ft) => {
+            const { name, phone, address, description, coverImg } = ft.data;
+            setFoodTruck({
+              name,
+              phone,
+              address,
+              description,
+              coverImg,
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [match.params.id]);
 
   return (
@@ -27,9 +56,11 @@ const TruckMenu = ({ match }) => {
           borderRadius: "15px",
         }}
       >
-        <h1>Halal Guy's Menu</h1>
-        <p>We serve the best Halal in Philly.</p>
-        <p>3650 Spruce Street</p>
+        <h1>{foodTruck.name}</h1>
+        <p>{foodTruck.description}</p>
+        <p>
+          {foodTruck.address} | {foodTruck.phone}
+        </p>
       </center>
       <div style={{ margin: "30px" }} />
       <Grid columns="equal">
@@ -38,8 +69,8 @@ const TruckMenu = ({ match }) => {
             <ul style={{ listStyle: "none", padding: 0 }}>
               <>
                 {menuData.map((d) => (
-                  <div key={d}>
-                    <FoodItem name={d} setCart={setCart} />
+                  <div key={d.id}>
+                    <FoodItem name={d.name} setCart={setCart} />
                   </div>
                 ))}
               </>

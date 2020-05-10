@@ -13,7 +13,7 @@ const TruckCard = ({ id, name, address, description, coverImg }) => {
           height: "300px",
         }}
       >
-        <div class="image">
+        <div className="image">
           <img src={coverImg} style={{ height: "180px", objectFit: "cover" }} />
         </div>
         <Card.Content>
