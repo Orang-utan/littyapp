@@ -3,6 +3,7 @@ import { UserContext } from "../utils/UserContext";
 import TruckCard from "../components/TruckCard";
 import { Divider } from "semantic-ui-react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const { user } = useContext(UserContext);
@@ -29,7 +30,10 @@ const Main = () => {
       ) : (
         <>
           <h1>Welcome to Litty!</h1>
-          <p>Looks like you don't have an account yet. Sign up here.</p>
+          <p>
+            Looks like you don't have an account yet. Sign up{" "}
+            <Link to="/register">here.</Link>
+          </p>
         </>
       )}
       <Divider />

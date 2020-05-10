@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { List, Button, Icon, Divider, Grid, Segment } from "semantic-ui-react";
+import React, { useEffect, useState, useContext } from "react";
+import { Button, Divider, Grid, Segment } from "semantic-ui-react";
 import FoodItem from "../components/FoodItem";
 import CartItem from "../components/CartItem";
 import axios from "axios";
 
-const TruckMenu = ({ match }) => {
+const TruckMenu = ({ match, history }) => {
   const [menuData, setMenuData] = useState([]);
   const [foodTruck, setFoodTruck] = useState({
     name: "",
@@ -17,6 +17,7 @@ const TruckMenu = ({ match }) => {
 
   const handleOrder = () => {
     console.log(cart);
+    history.push("/success");
   };
 
   useEffect(() => {
