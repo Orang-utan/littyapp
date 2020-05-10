@@ -25,7 +25,15 @@ SECRET_KEY = 'p9w_55=f-!rm-s7l16#z0@$$4k3@$n(7c+9=bx@j+at^pr@^-z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '5b516a36.ngrok.io']
+
+TWILIO_ACCOUNT_SID = 'ACd3abfd66666e1026286b2181a0eaa2e5'
+TWILIO_AUTH_TOKEN = 'f7830ae6327e632caa5ea0cf24c39be5'
+TWILIO_NUMBER = '+18587323530'
+SMS_BROADCAST_TO_NUMBERS = [
+    "+15106041131",
+    "+8619896504663"
+]
 
 
 # Application definition
@@ -33,6 +41,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'frontend',
     'accounts',
+    'text',
     'rest_framework',
     'knox',
     'django.contrib.admin',
