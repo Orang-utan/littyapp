@@ -41,6 +41,7 @@ SMS_BROADCAST_TO_NUMBERS = [
 INSTALLED_APPS = [
     'frontend',
     'accounts',
+    'foodtrucks',
     'text',
     'rest_framework',
     'knox',

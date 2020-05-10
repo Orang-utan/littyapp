@@ -3,27 +3,21 @@ import { UserContext } from "../utils/UserContext";
 import TruckCard from "../components/TruckCard";
 import { Divider } from "semantic-ui-react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const { user } = useContext(UserContext);
-
-  const data = [
-    {
-      id: "1",
-      name: "Halal Guy",
-      address: "3650 Spruce Street",
-      description: "Best halal in Philly",
-    },
-    {
-      id: "2",
-      name: "Ramen Guy",
-      address: "3650 Spruce Street",
-      description: "Best ramen in Philly",
-    },
-  ];
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    console.log(user);
+    axios
+      .get("/api/foodtrucks/")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [user]);
 
   return (
@@ -36,7 +30,10 @@ const Main = () => {
       ) : (
         <>
           <h1>Welcome to Litty!</h1>
-          <p>Looks like you don't have an account yet. Sign up here.</p>
+          <p>
+            Looks like you don't have an account yet. Sign up{" "}
+            <Link to="/register">here.</Link>
+          </p>
         </>
       )}
       <Divider />
@@ -49,6 +46,7 @@ const Main = () => {
                 name={d.name}
                 address={d.address}
                 description={d.description}
+                coverImg={d.coverImg}
               />
             </div>
           ))}

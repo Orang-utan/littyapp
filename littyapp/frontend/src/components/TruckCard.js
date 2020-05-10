@@ -2,7 +2,7 @@ import { Button, Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import React from "react";
 
-const TruckCard = ({ id, name, address, description }) => {
+const TruckCard = ({ id, name, address, description, coverImg }) => {
   return (
     <Link to={`/menu/${id}`}>
       <Card
@@ -10,10 +10,12 @@ const TruckCard = ({ id, name, address, description }) => {
           margin: "10px",
           flex: "1 200px",
           width: "250px",
-          height: "auto",
+          height: "300px",
         }}
       >
-        <Image src="static/images/matthew.png" wrapped ui={false} />
+        <div className="image">
+          <img src={coverImg} style={{ height: "180px", objectFit: "cover" }} />
+        </div>
         <Card.Content>
           <Card.Header>{name}</Card.Header>
           <Card.Meta>
