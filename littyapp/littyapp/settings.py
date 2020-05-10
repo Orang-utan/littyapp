@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'frontend',
     'accounts',
+    'foodtrucks',
     'rest_framework',
     'knox',
     'django.contrib.admin',
