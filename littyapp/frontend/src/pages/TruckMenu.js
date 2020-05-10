@@ -6,6 +6,12 @@ import CartItem from "../components/CartItem";
 const TruckMenu = ({ match }) => {
   const menuData = ["Lamb Over Rice", "Pepperoni Pizza", "Ramen", "Coke"];
 
+  const [cart, setCart] = useState([]);
+
+  const handleOrder = () => {
+    console.log(cart);
+  };
+
   useEffect(() => {
     // call on api
     console.log(match.params.id);
@@ -33,7 +39,7 @@ const TruckMenu = ({ match }) => {
               <>
                 {menuData.map((d) => (
                   <div key={d}>
-                    <FoodItem name={d} />
+                    <FoodItem name={d} setCart={setCart} />
                   </div>
                 ))}
               </>
@@ -42,11 +48,28 @@ const TruckMenu = ({ match }) => {
         </Grid.Column>
         <Grid.Column width={4}>
           <Segment>
-            <h2 style={{ marginBottom: "30px" }}>My Shopping Cart</h2>
-            <ul style={{ listStyle: "none", padding: 0 }}>
-              <CartItem name={"Lamb Over Rice"} />
-              <CartItem name={"Lamb Over Rice"} />
-            </ul>
+            <h2 style={{ marginBottom: "20px" }}>My Shopping Cart</h2>
+
+            {cart.length != 0 ? (
+              <>
+                <ul style={{ listStyle: "none", padding: 0 }}>
+                  {cart.map((d, idx) => (
+                    <div key={idx}>
+                      <CartItem name={d} setCart={setCart} cart={cart} />
+                    </div>
+                  ))}
+                </ul>
+                <Button primary onClick={handleOrder}>
+                  Place Order
+                </Button>
+              </>
+            ) : (
+              <>
+                <p>Your cart is empty, start selecting some food.</p>
+
+                <Button disabled>Place Order</Button>
+              </>
+            )}
           </Segment>
         </Grid.Column>
       </Grid>
