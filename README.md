@@ -25,6 +25,13 @@ Food Truck Menu:
 | Get user details             | api/auth/user                                             |
 | Logout / destroy token       | api/auth/logout                                           |
 
+## Key Packages
+
+Python:
+First Party Packages: UUID, dotenv
+Third Party Packages: Django, Django REST framework, Knox Authentication, Twilio
+React Packages: React, React Router, Semantic UI, Axios, Webpack, Babel
+
 ## Setting Up
 
 ##### Initialize a virtual enviroment
