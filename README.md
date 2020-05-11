@@ -1,6 +1,6 @@
 # Litty App
 
-A webapp designed for food truck online ordering. Think Snackpass but for food trucks. As users, you can register an account, order from your favorite food truck, and pick it up using a unique pick up code. This app is built using the following technology: Django, React, Semantic UI, Webpack, Babel.
+A webapp designed for food truck online ordering. Think Snackpass but for food trucks. As users, you can register an account, order from your favorite food truck, and pick it up using a unique pick up code. This app is built using the following technology: Django, Django REST, React, Semantic UI, Webpack, Babel.
 
 ## Demos
 
