@@ -12,6 +12,10 @@ Food Truck Menu:
 
 ![menu](docs/Screenshot2.png "menu")
 
+## Code Structure
+
+- `$ littyapp/accounts` handles
+
 ## API Endpoints
 
 | Name                         | API ENDPOINTS                                             |
