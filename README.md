@@ -14,7 +14,13 @@ Food Truck Menu:
 
 ## Code Structure
 
-- `$ littyapp/accounts` handles
+- `littyapp/accounts` handles authentication logic
+- `littyapp/foodtrucks` handles getting, creating foodtruck logics
+- `littyapp/frontend` handles frontend, only exist view logic
+- `littyapp/littyapp` contains settings file for Django
+- `littyapp/text` contains twilio sms text logic
+- `./webpacka.config.js` compiles React code in frontend
+- `./babelrc` makes React backward compatible
 
 ## API Endpoints
 
