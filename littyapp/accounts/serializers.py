@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 # User Serializer
+# serializes user model
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,6 +12,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'email')
 
 # Register Serializer
+# serializes user registration data
+# note that password is write only
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -26,12 +29,14 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 # Login Serializer
+#  serializes login data
 
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
 
+    #  invoke django method to validate
     def validate(self, data):
         user = authenticate(**data)
         if user and user.is_active:

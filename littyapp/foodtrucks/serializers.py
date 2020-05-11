@@ -4,11 +4,15 @@ import base64
 from django.conf import settings
 import os
 
+# serializing food truck to transform model into json format
+
 
 class FoodTruckSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FoodTruck
         fields = ['id', 'name', 'phone', 'address', 'description', 'coverImg']
+
+# serializing food item to transform model into json format
 
 
 class FoodItemSerializer(serializers.ModelSerializer):

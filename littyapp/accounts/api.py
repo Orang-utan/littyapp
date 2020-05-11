@@ -5,6 +5,7 @@ from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 
 
 # Register API
+# returns knox token if everything is validateds
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
@@ -19,6 +20,7 @@ class RegisterAPI(generics.GenericAPIView):
 
 
 # Login API
+# returns knox token
 class LoginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
 
@@ -33,6 +35,7 @@ class LoginAPI(generics.GenericAPIView):
 
 
 # Get User API
+# protected route
 class UserAPI(generics.RetrieveAPIView):
     permission_classes = [
         permissions.IsAuthenticated,

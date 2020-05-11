@@ -2,6 +2,7 @@
 from django.urls import path
 from . import api
 
+# url end points for food trucks
 urlpatterns = [
     path('api/foodtrucks/', api.FoodTrucks.as_view()),
     path('api/foodtrucks/<str:foodtruck_id>/', api.FoodTruckDetail.as_view()),

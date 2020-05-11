@@ -12,6 +12,19 @@ Food Truck Menu:
 
 ![menu](docs/Screenshot2.png "menu")
 
+## API Endpoints
+
+| Name                         | API ENDPOINTS                                             |
+| ---------------------------- | --------------------------------------------------------- |
+| Get all foodtrucks           | api/foodtrucks/                                           |
+| Get one foodtruck            | api/foodtrucks/<str:foodtruck_id>/                        |
+| Get one foodtruck's menu     | api/foodtrucks/<str:foodtruck_id>/menu/                   |
+| Get one foodtruck's fooditem | api/foodtrucks/<str:foodtruck_id>/menu/<str:fooditem_id>/ |
+| Log in                       | api/auth/login                                            |
+| Registrationn                | api/auth/register                                         |
+| Get user details             | api/auth/user                                             |
+| Logout / destroy token       | api/auth/logout                                           |
+
 ## Setting Up
 
 ##### Initialize a virtual enviroment

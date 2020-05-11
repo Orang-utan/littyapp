@@ -5,6 +5,8 @@ from .models import FoodTruck, FoodItem
 from django.http import Http404
 from rest_framework import status
 
+# setting up API views for getting / posting foodtrucks
+
 
 class FoodTrucks(APIView):
 
@@ -19,6 +21,8 @@ class FoodTrucks(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# setting up API views for getting / deleting one foodtruck
 
 
 class FoodTruckDetail(APIView):
@@ -39,6 +43,8 @@ class FoodTruckDetail(APIView):
         foodtruck.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+# setting up API views for getting / posting food items / menu
+
 
 class FoodItems(APIView):
 
@@ -58,6 +64,8 @@ class FoodItems(APIView):
             serializer.save(foodtruck_id=foodtruck_id)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# setting up API views for getting / deleting one food item
 
 
 class FoodItemDetail(APIView):
