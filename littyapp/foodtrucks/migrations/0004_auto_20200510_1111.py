@@ -6,6 +6,8 @@ import uuid
 
 class Migration(migrations.Migration):
 
+    atomic = False
+
     dependencies = [
         ('foodtrucks', '0003_auto_20200510_1110'),
     ]
@@ -14,11 +16,13 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='fooditem',
             name='id',
-            field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
+            field=models.UUIDField(
+                default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
         ),
         migrations.AlterField(
             model_name='foodtruck',
             name='id',
-            field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
+            field=models.UUIDField(
+                default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
         ),
     ]

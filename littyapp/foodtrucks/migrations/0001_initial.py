@@ -7,6 +7,8 @@ import uuid
 
 class Migration(migrations.Migration):
 
+    atomic = False
+
     initial = True
 
     dependencies = [
@@ -16,7 +18,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FoodTrucks',
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('id', models.UUIDField(default=uuid.uuid4,
+                                        editable=False, primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=100)),
                 ('phone', models.CharField(max_length=100, unique=True)),
                 ('address', models.TextField()),
@@ -26,9 +29,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FoodItem',
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('id', models.UUIDField(default=uuid.uuid4,
+                                        editable=False, primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=100)),
-                ('foodtruck', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='foodtrucks.FoodTrucks')),
+                ('foodtruck', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='foodtrucks.FoodTrucks')),
             ],
         ),
     ]

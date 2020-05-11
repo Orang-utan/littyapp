@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,10 +27,10 @@ SECRET_KEY = 'p9w_55=f-!rm-s7l16#z0@$$4k3@$n(7c+9=bx@j+at^pr@^-z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '5b516a36.ngrok.io']
+ALLOWED_HOSTS = ['localhost', '5b516a36.ngrok.io', '127.0.0.1']
 
-TWILIO_ACCOUNT_SID = 'ACd3abfd66666e1026286b2181a0eaa2e5'
-TWILIO_AUTH_TOKEN = 'f7830ae6327e632caa5ea0cf24c39be5'
+TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
 TWILIO_NUMBER = '+18587323530'
 SMS_BROADCAST_TO_NUMBERS = [
     "+15106041131",
