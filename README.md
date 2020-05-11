@@ -82,3 +82,11 @@ $ cd littyapp
 $ python3 manage.py migrate
 $ python3 manage.py runserver
 ```
+
+#### Create .env file in littyapp/littyapp
+
+```
+$ TWILIO_ACCOUNT_SID=xxxxxxxxxxxxxxxx
+$ TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxx
+$ TWILIO_NUMBER=xxxxxxxxxxxxxxxx
+```

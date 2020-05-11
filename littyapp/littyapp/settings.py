@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from dotenv import load_dotenv
+from pathlib import Path
+
 load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -31,11 +33,7 @@ ALLOWED_HOSTS = ['localhost', '5b516a36.ngrok.io', '127.0.0.1']
 
 TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
-TWILIO_NUMBER = '+18587323530'
-SMS_BROADCAST_TO_NUMBERS = [
-    "+15106041131",
-    "+8619896504663"
-]
+TWILIO_NUMBER = os.getenv('TWILIO_NUMBER')
 
 
 # Application definition

@@ -16,8 +16,26 @@ const TruckMenu = ({ match, history }) => {
   const [cart, setCart] = useState([]);
 
   const handleOrder = () => {
-    console.log(cart);
-    history.push("/success");
+    const phone = foodTruck.phone;
+    const order = cart;
+
+    const body = JSON.stringify({ phone, order });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    axios
+      .post("/api/sms/", body, config)
+      .then((res) => {
+        const code = res.data.pickup_code;
+        history.push(`/success/${code}`);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
   };
 
   useEffect(() => {

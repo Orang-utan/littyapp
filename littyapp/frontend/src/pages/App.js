@@ -37,7 +37,7 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <PrivateRoute exact path="/menu/:id" component={TruckMenu} />
             <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute exact path="/success" component={OrderSuccess} />
+            <PrivateRoute exact path="/success/:id" component={OrderSuccess} />
             <PrivateRoute exact path="/splash" component={Splash} />
             <Route path="/" component={BrokenLink} />
           </Switch>
