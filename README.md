@@ -27,10 +27,17 @@ Food Truck Menu:
 
 ## Key Packages
 
-Python:
-First Party Packages: UUID, dotenv
-Third Party Packages: Django, Django REST framework, Knox Authentication, Twilio
-React Packages: React, React Router, Semantic UI, Axios, Webpack, Babel
+##### First Party Packages:
+
+UUID, dotenv
+
+##### Third Party Packages:
+
+Django, Django REST framework, Knox Authentication, Twilio
+
+##### React Packages:
+
+React, React Router, Semantic UI, Axios, Webpack, Babel
 
 ## Setting Up
 
