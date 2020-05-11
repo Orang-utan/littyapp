@@ -31,7 +31,7 @@ Food Truck Menu:
 | Get one foodtruck's menu     | api/foodtrucks/<str:foodtruck_id>/menu/                   |
 | Get one foodtruck's fooditem | api/foodtrucks/<str:foodtruck_id>/menu/<str:fooditem_id>/ |
 | Log in                       | api/auth/login                                            |
-| Registrationn                | api/auth/register                                         |
+| Registration                | api/auth/register                                         |
 | Get user details             | api/auth/user                                             |
 | Logout / destroy token       | api/auth/logout                                           |
 
