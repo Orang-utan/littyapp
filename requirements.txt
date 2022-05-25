@@ -2,7 +2,7 @@ cryptography==2.9.2
 Django==3.0.5
 django-rest-knox==4.1.0
 djangorestframework==3.11.0
-PyJWT==1.7.1
+PyJWT==2.4.0
 requests==2.23.0
 sqlparse==0.3.1
 twilio==6.39.0
